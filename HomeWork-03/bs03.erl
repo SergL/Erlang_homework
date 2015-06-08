@@ -2,10 +2,9 @@
 -export([split/2]).
 
 split(Bin,S)->
-%byte_size(list_to_binary(S)).
     Sep = list_to_binary(S),
     L = byte_size(Sep),
-    split( Bin, [], <<>>,  Sep,  L).
+    p05:reverse(split( Bin, [], <<>>,  Sep,  L)).
 
 split(Bin, List, Word, Sep, L)->
 case Bin of
@@ -15,8 +14,8 @@ case Bin of
      <<H:1/binary, Rest/binary>> ->
         split(Rest, List, <<Word/binary, H/binary>>, Sep, L);
 
-    <<>> -> 
-	p05:reverse([Word|List])
+    <<>> ->
+    [Word|List]
 end.
 
 %BS03: Разделить строку на части, с явным указанием разделителя:  
