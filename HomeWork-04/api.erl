@@ -1,26 +1,34 @@
 -module(api).
 -export([create/1, insert/2, delete/2, select/3, all/1, getItem/2]).
-%-include_lib("stdlib/include/ms_transform.hrl").
+-include_lib("stdlib/include/ms_transform.hrl").
+%-record(users,{name, age, dt}).
 
 create(T)->
-    ets:new(T, [named_table]).
+    Pid = ets:new(T, [named_table]),
+    {ok, Pid}.
 
 insert(T,{Id,Name,Age})->
-    ets:insert(T, {Id,Name,Age,calendar:local_time()}).
+    ets:insert(T, Data={Id,Name,Age,calendar:local_time()}),
+    {ok, "Data Inserted = ",Data}.
 
-select(T,DtBegin,DtEnd)->
+select(T,DtStart,DtEnd)->
 %   Match =ets:fun2ms(fun(Dt) when Dt >= DtBegin, Dt =< DtEnd -> Dt end),
-    Match =ets:match(T, {'$1',[],'$1'}),
-    ets:select(T, Match).
+    Match =[{{'$1','$2','$3','$4'},[{'>','$4', DtStart}],['$$']}],
+    Itog = ets:select(T, Match),
+    {ok, "Itog = ",Itog}.
 
 getItem(T,Id)->
-    ets:lookup(T, Id).
+    Itog=ets:lookup(T, Id),
+    {ok, "Itog =", Itog }.
 
 delete(T,Id)->
-    ets:delete(T, Id).
+    ets:delete(T, Id),
+    {ok, "Record #",Id, " deleted"}.
 
 all(T)->
-    ets:tab2list(T).
+    Itog = ets:tab2list(T),
+    {ok, "All Record = ",Itog}.
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
