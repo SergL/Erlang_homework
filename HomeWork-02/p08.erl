@@ -11,10 +11,9 @@ compress([H|T], ITOG)->
 	compress(T,[H|ITOG]);
 
 compress([], ITOG)->
-	p05:reverse(ITOG).
+	P05:reverse(ITOG).
+
 
 
 %%P08 (**) Удалить последовательно следующие дубликаты:  
-%% 21> p08:compress([a,a,a,a,b,c,c,a,a,d,e,e,e,e,f,g,g]).
-%% [a,b,c,a,d,e,f,g]
-
+%% c(p08). p08:compress([a,a,a,a,b,c,c,a,a,d,e,e,e,e]).

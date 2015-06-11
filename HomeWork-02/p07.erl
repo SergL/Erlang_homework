@@ -3,23 +3,25 @@
 %-import(p05,[reverse/1]).
 
 
-
 flatten([H|T])->
-    flatten([H|T],[]).
+	flatten([H|T],[]).
 
-flatten([[H|T]|L], Itog)->
-    flatten([H,T|L],Itog);
 
+flatten([H,[AH|AT]], Itog)->
+	flatten([AH|AT],[H|Itog]);
 
 flatten([[]|T], Itog)->
-    flatten(T,Itog);
+	flatten(T,Itog);
 
+flatten([[H|T]|L], Itog)->
+	flatten([H,T|L],Itog);
 
 flatten([H|T], Itog)->
-    flatten(T,[H|Itog]);
+	flatten(T,[H|Itog])
+
 
 flatten([], Itog)->
-    p05:reverse(Itog).
+	p05:reverse(Itog).
 
 
 %P07 (**) Выровнять структуру с вложеными списками:  
