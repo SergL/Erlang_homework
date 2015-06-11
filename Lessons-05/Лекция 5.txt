@@ -1,0 +1,55 @@
+Erlang Academy
+Лекция 5
+Автор курса: Костюшкин Сергей
+
+План
+Паралеллизм
+Процессы
+Оператор recieve
+Типы связей между процессами
+Поведения (behaviours)
+Поведения встроенные в OTP
+Фреймворк для тестирования Common Test
+
+Паралеллизм
+Виды параллелизма:
+Паралельность — взаимодействие паралельных процессов
+Конкурентность — взаимодействие последовательных процессов
+
+Конкурентность базируется на обработке прерываний
+
+Процессы
+X = 1.
+F = fun() -> X + 1 end.
+P = spawn(F).
+
+Процессы
+F = fun() -> 
+    receive {ping, Pid} -> Pid ! pong end
+end.
+P = spawn(F).
+
+P ! {ping, self()}.
+receive 
+    Msg -> io:format(“Receive msg:~p~n”, [Msg])
+end.
+
+Рекурсивное чтение сообщений
+process_loop() ->
+    receive
+        {ping, Pid} ->
+            Pid ! pong;
+    end,
+    process_loop().
+
+
+Типы связей между процессами
+monitor
+link
+
+Поведения вcтроенные в OTP
+gen_server
+supervisor
+application
+gen_fsm
+gen_event
