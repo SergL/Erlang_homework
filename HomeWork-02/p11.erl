@@ -4,10 +4,14 @@
 encode_modified([H|T])->
     encode_modified(T,H,[],1).
 
-encode_modified([H|[]],H,Itog,Counter)->
+encode_modified([],_,Itog,_)->
+%	p05:reverse(Itog);
+	Itog;
+
+encode_modified([H],H,Itog,Counter)->
 	encode_modified([],H,[{Counter+1,H}|Itog],Counter);
 
-encode_modified([H|[]],A,Itog,Counter)->
+encode_modified([H],A,Itog,Counter)->
 	L=[{Counter,A}|Itog],
 	encode_modified([],H,[H|L],Counter);
 
@@ -18,11 +22,7 @@ encode_modified([H|T],A,Itog,1)->
 	encode_modified(T,H,[A|Itog],1);
 	
 encode_modified([H|T],A,Itog,Counter)->
-	encode_modified(T,H,[{Counter,A}|Itog],1);
-
-
-encode_modified([],_,Itog,_)->
-	p05:reverse(Itog).
+	encode_modified(T,H,[{Counter,A}|Itog],1).
 
 
 % p11:encode_modified([a,a,a,a,b,c,c,a,a,d,e,e,e,e]). 

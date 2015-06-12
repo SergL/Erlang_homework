@@ -4,17 +4,21 @@
 reverse([])->
     [];
 
-reverse([H|[]])->
+reverse([H])->
     [H];
 
 reverse([H|T])->
     reverse(T,[H]).
 
 reverse([],Itog)->
-    Itog;
+	Itog;
+
+reverse([H],Itog)->
+	reverse([],[H|Itog]);
 
 reverse([H|T],Itog)->
-    reverse(T,[H|Itog]).
+	reverse(T,[H|Itog]).
+
 
 %P05 (*) Перевернуть список:   
 %1> p05:reverse([1,2,3]). 

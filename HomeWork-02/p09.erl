@@ -6,7 +6,7 @@ pack([H|T])->
 
 
 pack([],_,Itog,_)->
-	p05:reverse(Itog);
+	reverse(Itog);
 
 pack([H|[]],H,Itog,SubItog)->
 	L=[H|SubItog],
@@ -25,8 +25,8 @@ pack([H|T],_A,Itog,SubItog)->
 	pack(T,H,[SubItog|Itog],[H]).
 
 
-% P09 (**) Запаковать последовательно следующие дубликаты во вложеные списки:  
-% p09:pack([a,a,a,a,b,c,c,a,a,d,e,e,e,e,f]).        
-% [[a,a,a,a],[b],[c,c],[a,a],[d],[e,e,e,e],[f]]
+
+% p09:pack([a,a,a,a,b,c,c,a,a,d,e,e,e,e]). 
+% [[a,a,a,a],[b],[c,c],[a,a],[d],[e,e,e,e]
 
 
