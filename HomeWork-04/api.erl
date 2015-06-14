@@ -1,7 +1,7 @@
 -module(api).
 -export([create/1, insert/2, delete/2, select/3, all/1, getItem/2]).
 -include_lib("stdlib/include/ms_transform.hrl").
-%-record(users,{name, age, dt}).
+%-record(users,{name, age, dt={}}).
 
 create(T)->
     Pid = ets:new(T, [named_table]),
@@ -26,7 +26,8 @@ delete(T,Id)->
     {ok, "Record #",Id, " deleted"}.
 
 all(T)->
-    Itog = ets:tab2list(T),
+    Match =[{{'$1','$2','$3','$4'},[],['$$']}]
+    Itog = ets:select(T),
     {ok, "All Record = ",Itog}.
 
 
