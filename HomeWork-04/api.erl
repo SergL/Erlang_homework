@@ -1,8 +1,7 @@
 -module(api).
 -export([create/1, insert/2, delete/2, select/3, all/1, getItem/2, insert_test_data/1]).
 -include_lib("stdlib/include/ms_transform.hrl").
--record(users,{id, name, age, dt}).
-
+-record(users,{name, age, dt={}}).
 
 create(T)->
     Pid = ets:new(T, [named_table, {keypos, #users.id}] )
@@ -47,6 +46,7 @@ all(T)->
 
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %c(api).
@@ -66,9 +66,9 @@ all(T)->
 % {1,"serg",40,{{2015,6,11},{13,52,36}}},
 % {5,"Oleg",23,{{2015,6,11},{13,53,6}}}]
 %
-%15> DtStart={{2015,6,11},{13,52,50}}.
-%{{2015,6,11},{13,52,50}}
-%DtEnd={{2015,6,11},{13,53,00}}.
+% 15> DtStart={{2015,6,11},{13,52,50}}.
+%    {{2015,6,11},{13,52,50}}
+% DtEnd={{2015,6,11},{13,53,00}}.
 % {{2015,6,11},{13,53,0}}
 % api:insert(my1,{8, "Vasil", 55}).
 % api:insert(my1,{9, "Вася", 55}).

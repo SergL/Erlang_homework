@@ -1,0 +1,9 @@
+﻿Домашнее задание (лекция 5)
+Процессы, ets, records, calendar, timer, cowboy, jsone или jsx
+
+
+
+
+1. curl -H "Content-Type: application/json" -X POST -d '{"action":"insert","key":"some_key", "value":[1,2,3]}' http://localhost:8080/api/cache_server
+2. curl -H "Content-Type: application/json" -X POST -d '{"action":"lookup","key":"some_key"}' http://localhost:8080/api/cache_server
+3. curl -H "Content-Type: application/json" -X POST -d '{"action":"lookup_by_date","date_from":"2015/1/1 00:00:00", "date_to":"2015/1/10 23:59:59"}' http://localhost:8080/api/cache_server

@@ -1,0 +1,62 @@
+Erlang Academy
+Лекция 6
+Автор курса: Костюшкин Сергей
+
+План
+Веб-сервера
+Драйвера баз данных
+Менеджеры пулов
+XML парсеры
+Json парсеры
+BERT протокол
+Отладка приложений
+
+Tuple module
+-module(active_record).
+-export([some_fun/2]).
+
+some_fun(FirstArg, SecondArg) ->
+    io:format("FirstArg:~p, SecondArg:~p~n", [FirstArg, SecondArg]).
+
+В консоле:
+1> R = {active_record, blablabla}.
+2> R:some_fun(first).
+
+
+Веб сервера
+yaws (https://github.com/klacke/yaws)
+mochiweb (https://github.com/mochi/mochiweb)
+webmachine (https://github.com/Webmachine/webmachine)
+misultin (https://github.com/ostinelli/misultin)
+cowboy (https://github.com/ninenines/cowboy)
+elli (https://github.com/knutin/elli)
+
+Драйвера баз данных
+epgsql (https://github.com/epgsql/epgsql)
+emysql (https://github.com/Eonblast/Emysql)
+mongodb-erlang (https://github.com/comtihon/mongodb-erlang)
+
+Менеджеры пулов
+poolboy (https://github.com/devinus/poolboy)
+pooler (https://github.com/seth/pooler)
+
+XML парсеры
+xmerl (OTP)
+erlsom (https://github.com/willemdj/erlsom)
+exomler (https://github.com/erlangbureau/exomler)
+exmpp_xml (https://github.com/processone/exmpp)
+
+JSON парсеры
+jsonx (https://github.com/iskra/jsonx)
+jiffy (https://github.com/davisp/jiffy)
+jsx (https://github.com/talentdeficit/jsx)
+jsoneerl (https://github.com/lambder/jsonerl)
+mochijson2 (https://github.com/bjnortier/mochijson2)
+yawsjson2 (https://github.com/erlang-synrc/yawsjson2)
+jsone (https://github.com/sile/jsone)
+
+BERT протокол
+http://bert-rpc.org/
+
+Отладка приложений
+observer (the best)
