@@ -26,7 +26,7 @@ insert(T,{Id,Name,Age})->
 
 select(T, DtStart, DtEnd)->
    Match =ets:fun2ms(fun(N = #users{dt = C})
-		       when C >= DtStart andalso C < DtEnd->
+		       when C >= DtStart andalso C =< DtEnd ->
 		                N
 		   end)
    , Itog = ets:select(T, Match)
